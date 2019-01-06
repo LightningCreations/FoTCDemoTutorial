@@ -22,31 +22,25 @@ public class Main {
                     new SpriteAI() {
                         public void runAI(Sprite mainPlayer) {
                             if(engine.keysDown[KeyEvent.VK_UP]) {
-                                mainPlayer.y--; // Up is negative
-                            }
-                            if(engine.keysDown[KeyEvent.VK_DOWN]) {
-                                mainPlayer.y++; // Down is positive
-                            }
-                            if(engine.keysDown[KeyEvent.VK_LEFT]) {
-                                mainPlayer.x--; // Left is negative
-                            }
-                            if(engine.keysDown[KeyEvent.VK_RIGHT]) {
-                                mainPlayer.x++; // Right is positive
-                            }
-                            if(engine.keysDown[KeyEvent.VK_W]) {
                                 mainPlayer.frame--;
                                 if(mainPlayer.frame < 0) mainPlayer.frame = 0;
                             }
-                            if(engine.keysDown[KeyEvent.VK_S]) {
+                            if(engine.keysDown[KeyEvent.VK_DOWN]) {
                                 mainPlayer.frame++;
                                 if(mainPlayer.frame > 180) mainPlayer.frame = 180;
                             }
-                            if(mainPlayer.collision)
-                                System.out.println("HIT");
+                            float xVelocity = (float) Math.sin((float) mainPlayer.frame / 180 * Math.PI) * 2;
+                            float yVelocity = (float) Math.cos((float) mainPlayer.frame / 180 * Math.PI) * -2;
+                            System.out.println("Velocity: (x = " + xVelocity + ", y = " + yVelocity + ")");
+                            mainPlayer.x += xVelocity;
+                            mainPlayer.y += yVelocity;
+//                            if(mainPlayer.collision)
+//                                System.out.println("HIT");
                             fc++;
-                            engine.things.add(0, new FoTCBullet(400, 400, (float) Math.cos(fc/60f)*2, (float) Math.sin(fc/60f)*2, engine));
+//                            engine.things.add(0, new FoTCBullet(400, 400, (float) Math.cos(fc/60f)*2, (float) Math.sin(fc/60f)*2, engine));
                         }
                     }, 50, 50, 100, 100, engine));
+            mainPlayer.frame = 90;
             mainPlayer.collideEnable = true;
             mainPlayer.collisionColor = 0xFF0000;
             engine.things.add(music = new BGMPlayer("music/lvl1.wav", engine));
