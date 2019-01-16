@@ -29,8 +29,8 @@ public class Main {
                                 mainPlayer.frame++;
                                 if(mainPlayer.frame > 180) mainPlayer.frame = 180;
                             }
-                            float xVelocity = (float) Math.sin(mainPlayer.frame  * Math.PI / 180) * 2;
-                            float yVelocity = (float) Math.cos(mainPlayer.frame  * Math.PI / 180) * -2;
+                            float xVelocity = (float) Math.sin(mainPlayer.frame * Math.PI / 180) * 2;
+                            float yVelocity = (float) Math.cos(mainPlayer.frame * Math.PI / 180) * -2;
                             System.out.println("Velocity: (x = " + xVelocity + ", y = " + yVelocity + ")");
                             mainPlayer.x += xVelocity;
                             mainPlayer.y += yVelocity;
