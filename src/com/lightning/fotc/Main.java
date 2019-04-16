@@ -117,7 +117,7 @@ public class Main {
     			int y = (int) ((starY[i]/starZ[i]+1)*512);
     			if(starX[i] < -20) {
         			starX[i] += 40;
-    			}
+			}
 
     			engine.plotPixel(x, y, 255, 255, 255);
     			engine.plotPixel(x, y+1, 255, 255, 255);
