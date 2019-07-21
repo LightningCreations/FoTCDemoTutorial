@@ -30,6 +30,7 @@ public class Main {
         private FotCExplosion mainPlayerExplosion;
         private FotCExplosion enemy1Explosion;
         
+        @Override
         public void loadState(Engine engine, GameState state) {
             if(state instanceof PrimaryGameState) {
                 switch((PrimaryGameState) state) {
@@ -192,7 +193,6 @@ public class Main {
                 }
             }
         }
-        
         public void doneLoading(Engine engine, GameState state) {
             if(state instanceof PrimaryGameState) {
                 switch((PrimaryGameState) state) {
@@ -303,6 +303,11 @@ public class Main {
         private Engine engine;
         
         public FotCEnemyBullet(float x, float y, float slopeX, float slopeY, Engine engine) {
+    public static class FoTCEnemyBullet extends Thing {
+        private float x, y, slopeX, slopeY;
+        private Engine engine;
+        
+        public FoTCEnemyBullet(float x, float y, float slopeX, float slopeY, Engine engine) {
             this.x = x;
             this.y = y;
             this.slopeX = slopeX;
